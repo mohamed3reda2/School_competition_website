@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Page</title>
+    <style>
+        /* Reset CSS */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Body Styles */
+        
+        body {
+            background-image: url('410517602_326847423450889_8396453028964291532_n.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        
+        .container {
+            width: 50%;
+            margin: 100px auto;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: background-color 0.3s ease;
+        }
+        
+        input[type="text"]:focus {
+            background-color: rgba(255, 255, 255, 1);
+        }
+        
+        button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        /* Radio Button Styles */
+        
+        input[type="radio"] {
+            margin: 0 5px;
+        }
+        
+        label {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        /* Positioning for English text */
+        
+        .english-text {
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            direction: ltr;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- English text -->
+    <div class="english-text">Directed by Class: J-6</div>
+    <div class="container">
+        <h1>Welcome to Student Page</h1>
+        <form id="studentForm" onsubmit="saveData(event)">
+            <input type="text" id="student_name" placeholder="Student Name">
+            <br>
+            <input type="text" id="class" placeholder="Class">
+            <br>
+            <label for="language">Select Language:</label><br>
+            <input type="radio" id="arabic" name="language" value="arabic">
+            <label for="arabic">Arabic</label>
+            <input type="radio" id="english" name="language" value="english">
+            <label for="english">English</label>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function saveData(event) {
+            event.preventDefault();
+
+            var studentName = document.getElementById("student_name").value;
+            var className = document.getElementById("class").value;
+            var language = document.querySelector('input[name="language"]:checked').value;
+
+            localStorage.setItem("studentName", studentName);
+            localStorage.setItem("className", className);
+
+            if (language === 'arabic') {
+                window.location.href = "page2.html";
+            } else if (language === 'english') {
+                window.location.href = "page4.html";
+            }
+        }
+    </script>
+</body>
+
+</html>

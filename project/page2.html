@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page2</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div class="english-text">Directed by Class: J-6</div>
+    <div class="time" id="time">Time: 00:00</div>
+    <div class="container">
+        <div id="studentData"></div>
+        <div class="question" id="randomQuestion"></div>
+        <br>
+        <label for="answer">Answer:</label>
+        <input type="text" id="answer" name="answer">
+        <br><br>
+        <button onclick="submitAnswer()">Submit Answer</button>
+        <p id="result"></p>
+        <p id="questionCount"></p>
+        <p id="correctCount"></p>
+    </div>
+
+    <script>
+        var studentName = localStorage.getItem("studentName");
+        var className = localStorage.getItem("className");
+
+        document.getElementById("studentData").innerHTML = "Student Name: " + studentName + "<br> Class: " + className;
+        var questionsData = `1. ما هي لغة البرمجة التي تستخدم في تطوير تطبيقات سطح المكتب باستخدام تقنية .NET؟
+   - أ) C#
+   - ب) Java
+   - ج) Python
+   - د) C++
+
+2. ما هو ترتيب الأولويات للعمليات الحسابية في لغة البرمجة C#؟
+   - أ) قوسين، ضرب وقسمة، جمع وطرح
+   - ب) قوسين، جمع وطرح، ضرب وقسمة
+   - ج) ضرب وقسمة، جمع وطرح، قوسين
+   - د) جمع وطرح، ضرب وقسمة، قوسين
+
+3. ما هو مصطلح يستخدم لوصف العملية التي تقوم بتحويل برنامج مكتوب بلغة برمجة ما إلى رمز آلي قابل للتنفيذ؟
+   - أ) تحليل البرنامج
+   - ب) ترجمة البرنامج
+   - ج) تنفيذ البرنامج
+   - د) تصحيح البرنامج
+
+4. في لغة البرمجة C++، ما هو النوع الأساسي للمتغير الذي يحتوي على قيم صحيحة فقط؟
+   - أ) int
+   - ب) float
+   - ج) bool
+   - د) char
+
+5. ما الدالة التي تُستخدم للطباعة على الشاشة في لغة البرمجة C++؟
+   - أ) print()
+   - ب) display()
+   - ج) cout
+   - د) printf()
+
+6. ما هو النوع الرئيسي للمتغيرات التي تحتوي على الأحرف في لغة البرمجة C#؟
+   - أ) int
+   - ب) string
+   - ج) float
+   - د) char
+
+7. ما هي لغة البرمجة التي تستخدم لتطوير تطبيقات نظام التشغيل Windows؟
+   - أ) C#
+   - ب) Java
+   - ج) Python
+   - د) Swift
+
+8. ما هو المكتبة القياسية التي تستخدم للإدخال والإخراج في لغة البرمجة C++؟
+   - أ) iostream
+   - ب) inputoutput
+   - ج) io
+   - د) stdlib
+
+9. ما هو مصطلح يشير إلى البرمجة التي تركز على التفاعل بين البرامج والأجهزة الفعلية؟
+   - أ) برمجة الواجهة الرسومية
+   - ب) برمجة المتحكمات
+   - ج) برمجة الشبكات
+   - د) برمجة الويب
+
+10. ما هو مصطلح يشير إلى جميع الأجهزة الفعلية المستخدمة في أنظمة الكمبيوتر؟
+    - أ) البرمجيات
+    - ب) الشبكات
+    - ج) الهاردوير
+    - د) البيانات
+
+11. ما هو النظام الأساسي الذي يعمل عليه أجهزة الكمبيوتر مثل الحواسيب والهواتف؟
+    - أ) Linux
+    - ب) Windows
+    - ج) Android
+    - د) iOS
+
+12. ما هي الوحدة الأساسية لقياس سرعة المعالج؟
+    - أ) البت
+    - ب) الهرتز
+    - ج) الجيجابت
+    - د) الكيلوبايت
+
+13. ما هي وحدة التخزين الرئيسية التي تستخدم لقياس مساحة التخزين على الأقراص الصلبة؟
+    - أ) الكيلوبايت
+    - ب) الجيجابايت
+    - ج) الميجابايت
+    - د) البت
+
+14. ما هو الجزء الرئيسي من الحاسوب الذي يدير وظائف البرامج والعمليات؟
+    - أ) وحدة المعالجة المركزية (CPU)
+    - ب) بطاقة الفيديو (GPU)
+    - ج) الذاكرة العشوائية (RAM)
+    - د) وحدة التخزين (Storage)
+
+15. ما هو البرنامج المستخدم لتحرير الشفرات المصدرية في لغة البرمجة C#؟
+    - أ) Visual Studio
+    - ب) Sublime Text
+    - ج) Notepad++
+    - د) Atom
+
+16. ما هو نوع البيانات الذي يمثل القيم الصحيحة (True/False) في لغة البرمجة C++؟
+    - أ) int
+    - ب) bool
+    - ج) char
+    - د) float
+
+17. ما هي اللغة التي تُستخدم في برمجة أنظمة التشغيل مثل Linux؟
+    - أ) C
+    - ب) Java
+    - ج) Python
+    - د) Ruby
+
+18. ما هو مصطلح يشير إلى البرمجة التي تركز على تطوير مواقع الويب وتفاعل المستخدم معها؟
+    - أ) برمجة الويب
+    - ب) برمجة الذكاء الاصطناعي
+    - ج) برمجة الألعاب
+    - د) برمجة المتحكمات
+
+19. ما هي الشركة المطورة للغة البرمجة C#؟
+    - أ) Microsoft
+    - ب) Google
+    - ج) Apple
+    - د) Oracle
+
+20. ما هي الدالة التي تُستخدم للإدخال من المستخدم في لغة البرمجة C++؟
+    - أ) input()
+    - ب) get()
+    - ج) cin
+    - د) scanf()
+
+21. ما هو النوع الرئيسي للمتغيرات التي تحتوي على الأرقام العشرية في لغة البرمجة C#؟
+    - أ) int
+    - ب) string
+    - ج) float
+    - د) double
+
+22. ما هو المصطلح الذي يشير إلى القدرة على تغيير الشفرة المصدرية دون التأثير على سلوك البرنامج؟
+    - أ) التوثيق
+    - ب) التحليل
+    - ج) الاختبار
+    - د) الصيانة
+
+23. ما هو المكتبة القياسية التي تُستخدم للإدخال والإخراج في لغة البرمجة C#؟
+    - أ) stdio.h
+    - ب) iostream
+    - ج) windows.h
+    - د) conio.h
+
+24. ما هو المصطلح الذي يشير إلى قدرة البرمجيات على التعامل مع البيانات المختلفة بدون تغيير في الشفرة؟
+    - أ) التواصل
+    - ب) القابلية للتطوير
+    - ج) المرونة
+    - د) السهولة في الاستخدام
+
+25. ما هو المصطلح الذي يشير إلى تقسيم البرنامج إلى وحدات صغيرة لسهولة الصيانة وإعادة الاستخدام؟
+    - أ) البرمجة الوظيفية
+    - ب) البرمجة الكينونية
+    - ج) البرمجة المهيكلة
+    - د) البرمجة الشيئية
+
+26. ما هو نوع البيانات الذي يحتفظ بالقيم العشرية في لغة البرمجة C++؟
+    - أ) int
+    - ب) float
+    - ج) double
+    - د) char
+
+27. ما هي اللغة التي يتم استخدامها في تطوير تطبيقات iOS؟
+    - أ) Java
+    - ب) Swift
+    - ج) C#
+    - د) Kotlin
+
+28. ما هي الوظيفة الرئيسية للوحدة المركزية (CPU) في الحاسوب؟
+    - أ) تخزين البيانات
+    - ب) إدارة البرامج والعمليات
+    - ج) عرض الرسوميات
+    - د) توصيل الحاسوب بالإنترنت
+
+29. ما هو مصطلح يشير إلى العملية التي تقوم بها وحدة المعالجة المركزية (CPU) لتنفيذ التعليمات؟
+    - أ) التخزين
+    - ب) الإدخال
+    - ج) التنفيذ
+    - د) النقل
+
+30. ما هي اللغة التي تُستخدم لتطوير تطبيقات سطح المكتب باستخدام تقنية .NET؟
+    - أ) C#
+    - ب) Java
+    - ج) Python
+    - د) C++
+
+31. ما هي الوحدة الرئيسية التي تُستخدم لتخزين البيانات المؤقتة التي يمكن الوصول إليها بسرعة؟
+    - أ) الهارد ديسك
+    - ب) الذاكرة العشوائية (RAM)
+    - ج) الذاكرة الخارجية
+    - د) وحدة المعالجة المركزية (CPU)
+
+32. ما هو مصطلح يشير إلى برامج الكمبيوتر التي تُستخدم لإنشاء تطبيقات محددة تعمل على أنظمة تشغيل معينة؟
+    - أ) برمجيات النظام
+    - ب) برمجيات التطبيقات
+    - ج) برمجيات التشغيل
+    - د) برمجيات الشبكات
+
+33. ما هو النظام الأساسي الذي يعمل عليه أجهزة الهواتف الذكية مثل iPhone؟
+    - أ) Windows
+    - ب) Android
+    - ج) iOS
+    - د) Linux
+
+34. ما هو المصطلح الذي يشير إلى البرمجة التي تستخدم لتحليل ومعالجة البيانات الكبيرة؟
+    - أ) برمجة الشبكات
+    - ب) برمجة الويب
+    - ج) برمجة البيانات
+    - د) برمجة الذكاء الاصطناعي
+
+35. ما هو النوع الرئيسي للمتغيرات التي تحتوي على القيم العشرية في لغة البرمجة C++؟
+    - أ) int
+    - ب) string
+    - ج) float
+    - د) double
+
+36. ما هو المصطلح الذي يشير إلى تحويل بيانات من شكل إلى آخر؟
+    - أ) الربط
+    - ب) التحليل
+    - ج) الوساطة
+    - د) التحويل
+
+37. ما هو المصطلح الذي يشير إلى مجموعة البرامج التي تدير وتنظم عمليات الكمبيوتر؟
+    - أ) النظام
+    - ب) الشبكة
+    - ج) البرمجيات
+    - د) الأجهزة
+
+38. ما هو المصطلح الذي يشير إلى عملية العثور على أخطاء البرمجة وتصحيحها؟
+    - أ) التصحيح
+    - ب) البرمجة
+    - ج) التحليل
+    - د) التوثيق
+
+39. ما هو النوع الرئيسي للمتغيرات التي تحتوي على القيم المنطقية (True/False) في لغة البرمجة C#؟
+    - أ) int
+    - ب) string
+    - ج) bool
+    - د) float
+
+40. ما هو المصطلح الذي يشير إلى توثيق الشفرة المصدرية لتسهيل فهمها وصيانتها؟
+    - أ) التحليل
+    - ب) البرمجة
+    - ج) التوثيق
+    - د) الاختبار`;
+
+        var questionsArray = questionsData.split('\n\n');
+
+        var questionCount = 0;
+        var correctCount = 0;
+        var questionsDisplayed = 0; // تعريف متغير الأسئلة المعروضة
+
+        // دالة لتنسيق الزمن بصورة صحيحة
+        function pad(val) {
+            return val > 9 ? val : "0" + val;
+        }
+
+        // دالة لتحديث العداد الزمني
+        var time = 60;
+        var countdown = setInterval(function() {
+            var minutes = Math.floor(time / 60);
+            var seconds = time % 60;
+            var timeString = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            document.getElementById("time").innerHTML = "Time: " + timeString;
+            time--;
+            if (time < 0) {
+                clearInterval(countdown);
+                saveResults(); // انتهى الوقت، قم بحفظ النتائج
+            }
+        }, 1000);
+
+        function generateRandomQuestion() {
+            var randomNumber = Math.floor(Math.random() * questionsArray.length);
+            var randomQuestion = questionsArray[randomNumber];
+            var questionParts = randomQuestion.split('\n'); // تقسيم السؤال والإجابات بواسطة فواصل جديدة
+            var formattedQuestion = questionParts[0] + "<br>"; // الجزء الأول هو السؤال
+            for (var i = 1; i < questionParts.length; i++) {
+                formattedQuestion += questionParts[i] + "<br>"; // باقي الأجزاء هي الإجابات
+            }
+            document.getElementById("randomQuestion").innerHTML = formattedQuestion;
+            questionsArray.splice(randomNumber, 1);
+            questionCount++;
+            document.getElementById("questionCount").innerHTML = "Question Count: " + questionCount;
+        }
+
+        function submitAnswer() {
+            var answer = document.getElementById("answer").value.trim();
+            var resultElement = document.getElementById("result");
+            var correctAnswers = {
+                "1": "أ",
+                "2": "أ",
+                "3": "ب",
+                "4": "ج",
+                "5": "ج",
+                "6": "د",
+                "7": "أ",
+                "8": "أ",
+                "9": "ب",
+                "10": "ج",
+                "11": "ج",
+                "12": "ب",
+                "13": "ب",
+                "14": "أ",
+                "15": "أ",
+                "16": "ب",
+                "17": "أ",
+                "18": "أ",
+                "19": "أ",
+                "20": "ج",
+                "21": "ج",
+                "22": "ج",
+                "23": "ب",
+                "24": "ج",
+                "25": "أ",
+                "26": "ج",
+                "27": "ب",
+                "28": "ب",
+                "29": "ج",
+                "30": "أ",
+                "31": "ب",
+                "32": "ب",
+                "33": "ج",
+                "34": "د",
+                "35": "ج",
+                "36": "د",
+                "37": "أ",
+                "38": "أ",
+                "39": "ج",
+                "40": "ج"
+            };
+
+            var currentQuestion = document.getElementById("randomQuestion").innerText;
+            var currentQuestionNumber = currentQuestion.split('.')[0];
+
+            if (correctAnswers[currentQuestionNumber] === answer) {
+                resultElement.innerHTML = "Correct!";
+                resultElement.style.color = "green";
+                correctCount++;
+            } else {
+                resultElement.innerHTML = "Incorrect. The correct answer is: " + correctAnswers[currentQuestionNumber];
+                resultElement.style.color = "red";
+            }
+
+            document.getElementById("correctCount").innerHTML = "Correct Answers: " + correctCount;
+
+            // مسح قيمة الإجابة بعد تقديمها
+            document.getElementById("answer").value = "";
+
+            // عرض سؤال جديد بعد تقديم الإجابة
+            generateRandomQuestion();
+        }
+
+        function saveResults() {
+            clearInterval(countdown); // توقف العد التنازلي
+            var fileContent = "Student Name: " + studentName + "\n";
+            fileContent += "Class: " + className + "\n";
+            fileContent += "Question Count: " + questionCount + "\n";
+            fileContent += "Correct Answers: " + correctCount + "\n";
+            fileContent += "Accuracy: " + (correctCount / questionCount * 100).toFixed(2) + "%" + "\n";
+            var filename = studentName + "_Results.txt";
+
+            // إنشاء عنصر "a" للتنزيل الآلي للملف
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(fileContent));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+
+            // بعد حفظ النتائج، قم بالتنقل إلى الصفحة التالية
+            window.location.href = "endpage.html";
+        }
+
+        // عرض سؤال عشوائي عند تحميل الصفحة لأول مرة
+        generateRandomQuestion();
+    </script>
+</body>
+
+</html>

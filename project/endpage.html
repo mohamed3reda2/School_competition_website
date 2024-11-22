@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-image: url('410517602_326847423450889_8396453028964291532_n.jpg');
+            background-size: cover;
+            background-position: center;
+            padding-top: 50px;
+            text-align: center;
+        }
+        
+        .comment-box {
+            margin-top: 30px;
+            width: 60%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        
+        .comment-box textarea {
+            width: 95%;
+            height: 99px;
+            padding: 5px;
+            margin-top: 5px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        /* Positioning for Arabic text */
+        
+        .arabic-text {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            direction: ltr;
+            opacity: 0.5;
+        }
+        /* Positioning for English text */
+        
+        .english-text {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            direction: ltr;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Time's Up!</h1>
+    <p class="thank-you">Thank you for participating</p>
+    <p>❤️❤️</p>
+
+    <div class="comment-box">
+        <h2>Leave a Comment:</h2>
+        <textarea id="comment" name="comment" placeholder="Write your comment here..."></textarea>
+        <br>
+        <button class="submit-button" onclick="submitComment()">Submit Comment</button>
+    </div>
+
+    <!-- Arabic text -->
+    <div class="english-text">Directed by Eng: Mohamed Reda</div>
+    <div class="arabic-text">Class: J-6</div>
+
+
+    <script>
+        function submitComment() {
+            var comment = document.getElementById("comment").value;
+            var blob = new Blob([comment], {
+                type: "text/plain;charset=utf-8"
+            });
+            var link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "comments.txt";
+            link.click();
+            alert("Comment added successfully!");
+            document.getElementById("comment").value = "";
+        }
+    </script>
+</body>
+
+</html>

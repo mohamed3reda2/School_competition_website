@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page2</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div class="english-text">Directed by Class: J-6</div>
+    <div class="time" id="time">Time: 00:00</div>
+    <div class="container">
+        <div id="studentData"></div>
+        <div class="question" id="randomQuestion"></div>
+        <br>
+        <label for="answer">Answer:</label>
+        <input type="text" id="answer" name="answer">
+        <br><br>
+        <button onclick="submitAnswer()">Submit Answer</button>
+        <p id="result"></p>
+        <p id="questionCount"></p>
+        <p id="correctCount"></p>
+    </div>
+
+    <script>
+        var studentName = localStorage.getItem("studentName");
+        var className = localStorage.getItem("className");
+
+        document.getElementById("studentData").innerHTML = "Student Name: " + studentName + "<br> Class: " + className;
+        var questionsData = `1. What programming language is used for developing desktop applications using .NET technology?
+   - A) C#
+   - B) Java
+   - C) Python
+   - D) C++
+
+2. What is the order of precedence for arithmetic operations in the C# programming language?
+   - A) Parentheses, Multiplication and Division, Addition and Subtraction
+   - B) Parentheses, Addition and Subtraction, Multiplication and Division
+   - C) Multiplication and Division, Addition and Subtraction, Parentheses
+   - D) Addition and Subtraction, Multiplication and Division, Parentheses
+
+3. What is the term used to describe the process of converting a program written in a programming language into executable machine code?
+   - A) Program analysis
+   - B) Program translation
+   - C) Program execution
+   - D) Program debugging
+
+4. In the C++ programming language, what is the fundamental type for a variable that holds only true or false values?
+   - A) int
+   - B) float
+   - C) bool
+   - D) char
+
+5. What is the function used for printing to the screen in the C++ programming language?
+   - A) print()
+   - B) display()
+   - C) cout
+   - D) printf()
+
+6. What is the main type for variables that hold characters in the C# programming language?
+   - A) int
+   - B) string
+   - C) float
+   - D) char
+
+7. What programming language is used for developing Windows operating system applications?
+   - A) C#
+   - B) Java
+   - C) Python
+   - D) Swift
+
+8. What is the standard library used for input and output in the C++ programming language?
+   - A) iostream
+   - B) inputoutput
+   - C) io
+   - D) stdlib
+
+9. What is the term for programming that focuses on the interaction between programs and physical devices?
+   - A) Graphical User Interface (GUI) programming
+   - B) Controller programming
+   - C) Network programming
+   - D) Web programming
+
+10. What is the term that refers to all the physical devices used in computer systems?
+    - A) Software
+    - B) Networks
+    - C) Hardware
+    - D) Data
+
+11. What is the underlying system that computers such as computers and smartphones run on?
+    - A) Linux
+    - B) Windows
+    - C) Android
+    - D) iOS
+
+12. What is the basic unit of measurement for processor speed?
+    - A) Bits
+    - B) Hertz
+    - C) Gigabits
+    - D) Kilobytes
+
+13. What is the primary storage unit used to measure storage space on hard disks?
+    - A) Kilobyte
+    - B) Gigabyte
+    - C) Megabyte
+    - D) Bit
+
+14. What is the main part of the computer that manages program and process functions?
+    - A) Central Processing Unit (CPU)
+    - B) Graphics Processing Unit (GPU)
+    - C) Random Access Memory (RAM)
+    - D) Storage Unit
+
+15. What is the program used to edit source code in the C# programming language?
+    - A) Visual Studio
+    - B) Sublime Text
+    - C) Notepad++
+    - D) Atom
+
+16. What is the data type that represents true or false values in the C++ programming language?
+    - A) int
+    - B) bool
+    - C) char
+    - D) float
+
+17. What language is used in programming operating systems like Linux?
+    - A) C
+    - B) Java
+    - C) Python
+    - D) Ruby
+
+18. What is the term for programming that focuses on developing websites and user interaction with them?
+    - A) Web programming
+    - B) Artificial Intelligence programming
+    - C) Game programming
+    - D) Controller programming
+
+19. What is the company that developed the C# programming language?
+    - A) Microsoft
+    - B) Google
+    - C) Apple
+    - D) Oracle
+
+20. What is the function used for user input in the C++ programming language?
+    - A) input()
+    - B) get()
+    - C) cin
+    - D) scanf()
+
+21. What is the main type for variables that hold decimal numbers in the C# programming language?
+    - A) int
+    - B) string
+    - C) float
+    - D) double
+
+22. What is the term that refers to the ability to change source code without affecting the program's behavior?
+    - A) Documentation
+    - B) Analysis
+    - C) Testing
+    - D) Maintenance
+
+23. What is the standard library used for input and output in the C# programming language?
+    - A) stdio.h
+    - B) iostream
+    - C) windows.h
+    - D) conio.h
+
+24. What is the term that refers to the software's ability to deal with different data without changing the code?
+    - A) Communication
+    - B) Extensibility
+    - C) Flexibility
+    - D) Ease of use
+
+25. What is the term that refers to dividing a program into small units for easy maintenance and reusability?
+    - A) Functional programming
+    - B) Procedural programming
+    - C) Structured programming
+    - D) Object-oriented programming
+
+26. What is the data type that holds decimal values in the C++ programming language?
+    - A) int
+    - B) float
+    - C) double
+    - D) char
+
+27. What language is used for developing iOS applications?
+    - A) Java
+    - B) Swift
+    - C) C#
+    - D) Kotlin
+
+28. What is the main function of the Central Processing Unit (CPU) in a computer?
+    - A) Data storage
+    - B) Program and process management
+    - C) Graphics display
+    - D) Internet connection
+
+29. What is the term that refers to the process that the Central Processing Unit (CPU) performs to execute instructions?
+    - A) Storage
+    - B) Input
+    - C) Execution
+    - D) Transfer
+
+30. What is the language used for developing desktop applications using .NET technology?
+    - A) C#
+    - B) Java
+    - C) Python
+    - D) C++
+
+31. What is the main unit used to store temporary data that can be quickly accessed?
+    - A) Hard disk
+    - B) Random Access Memory (RAM)
+    - C) External memory
+    - D) Central Processing Unit (CPU)
+
+32. What is the term used to describe the process of finding and fixing errors in a program?
+    - A) Compilation
+    - B) Debugging
+    - C) Testing
+    - D) Maintenance
+
+33. What is the term that refers to programming that focuses on user interface design?
+    - A) User Interface (UI) programming
+    - B) Backend programming
+    - C) Network programming
+    - D) Algorithmic programming
+
+34. What is the basic unit of measurement for computer memory?
+    - A) Bit
+    - B) Byte
+    - C) Megabit
+    - D) Kilobyte
+
+35. What is the term that refers to the ability of a program to perform multiple tasks at the same time?
+    - A) Multitasking
+    - B) Sequential processing
+    - C) Single-tasking
+    - D) Parallel processing
+
+36. What is the main type for variables that hold whole numbers in the C++ programming language?
+    - A) int
+    - B) float
+    - C) double
+    - D) char
+
+37. What is the term that refers to the process of translating source code into machine language?
+    - A) Compilation
+    - B) Interpretation
+    - C) Execution
+    - D) Debugging
+
+38. What is the standard library used for input and output in the Python programming language?
+    - A) io
+    - B) sys
+    - C) os
+    - D) print
+
+39. What is the term that refers to the ability to extend a program's functionality without modifying its source code?
+    - A) Reusability
+    - B) Modularity
+    - C) Extensibility
+    - D) Scalability
+
+40. What is the function used for printing to the screen in the Python programming language?
+    - A) echo()
+    - B) write()
+    - C) print()
+    - D) display()`;
+
+        var questionsArray = questionsData.split('\n\n');
+
+        var questionCount = 0;
+        var correctCount = 0;
+        var questionsDisplayed = 0; // تعريف متغير الأسئلة المعروضة
+
+        // دالة لتنسيق الزمن بصورة صحيحة
+        function pad(val) {
+            return val > 9 ? val : "0" + val;
+        }
+
+        // دالة لتحديث العداد الزمني
+        var time = 900;
+        var countdown = setInterval(function() {
+            var minutes = Math.floor(time / 60);
+            var seconds = time % 60;
+            var timeString = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+            document.getElementById("time").innerHTML = "Time: " + timeString;
+            time--;
+            if (time < 0) {
+                clearInterval(countdown);
+                saveResults(); // انتهى الوقت، قم بحفظ النتائج
+            }
+        }, 1000);
+
+        function generateRandomQuestion() {
+            var randomNumber = Math.floor(Math.random() * questionsArray.length);
+            var randomQuestion = questionsArray[randomNumber];
+            var questionParts = randomQuestion.split('\n'); // تقسيم السؤال والإجابات بواسطة فواصل جديدة
+            var formattedQuestion = questionParts[0] + "<br>"; // الجزء الأول هو السؤال
+            for (var i = 1; i < questionParts.length; i++) {
+                formattedQuestion += questionParts[i] + "<br>"; // باقي الأجزاء هي الإجابات
+            }
+            document.getElementById("randomQuestion").innerHTML = formattedQuestion;
+            questionsArray.splice(randomNumber, 1);
+            questionCount++;
+            document.getElementById("questionCount").innerHTML = "Question Count: " + questionCount;
+        }
+
+        function submitAnswer() {
+            var answer = document.getElementById("answer").value.trim();
+            var resultElement = document.getElementById("result");
+            var correctAnswers = {
+                "1": "a",
+                "2": "a",
+                "3": "b",
+                "4": "c",
+                "5": "c",
+                "6": "d",
+                "7": "a",
+                "8": "a",
+                "9": "b",
+                "10": "c",
+                "11": "c",
+                "12": "b",
+                "13": "b",
+                "14": "a",
+                "15": "a",
+                "16": "b",
+                "17": "a",
+                "18": "a",
+                "19": "a",
+                "20": "c",
+                "21": "c",
+                "22": "c",
+                "23": "b",
+                "24": "c",
+                "25": "a",
+                "26": "c",
+                "27": "b",
+                "28": "b",
+                "29": "c",
+                "30": "a",
+                "31": "b",
+                "32": "b",
+                "33": "c",
+                "34": "d",
+                "35": "c",
+                "36": "d",
+                "37": "a",
+                "38": "a",
+                "39": "c",
+                "40": "c"
+            };
+
+
+            var currentQuestion = document.getElementById("randomQuestion").innerText;
+            var currentQuestionNumber = currentQuestion.split('.')[0];
+
+            if (correctAnswers[currentQuestionNumber] === answer) {
+                resultElement.innerHTML = "Correct!";
+                resultElement.style.color = "green";
+                correctCount++;
+            } else {
+                resultElement.innerHTML = "Incorrect. The correct answer is: " + correctAnswers[currentQuestionNumber];
+                resultElement.style.color = "red";
+            }
+
+            document.getElementById("correctCount").innerHTML = "Correct Answers: " + correctCount;
+
+            // مسح قيمة الإجابة بعد تقديمها
+            document.getElementById("answer").value = "";
+
+            // عرض سؤال جديد بعد تقديم الإجابة
+            generateRandomQuestion();
+        }
+
+        function saveResults() {
+            clearInterval(countdown); // توقف العد التنازلي
+            var fileContent = "Student Name: " + studentName + "\n";
+            fileContent += "Class: " + className + "\n";
+            fileContent += "Question Count: " + questionCount + "\n";
+            fileContent += "Correct Answers: " + correctCount + "\n";
+            fileContent += "Accuracy: " + (correctCount / questionCount * 100).toFixed(2) + "%" + "\n";
+            var filename = studentName + "_Results.txt";
+
+            // إنشاء عنصر "a" للتنزيل الآلي للملف
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(fileContent));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+
+            // بعد حفظ النتائج، قم بالتنقل إلى الصفحة التالية
+            window.location.href = "endpage.html";
+        }
+
+        // عرض سؤال عشوائي عند تحميل الصفحة لأول مرة
+        generateRandomQuestion();
+    </script>
+</body>
+
+</html>
